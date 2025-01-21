@@ -1,0 +1,34 @@
+/*
+Avatar
+  Avatar-item
+    Avatar-image
+  Avatar-item
+    Avatar-image
+*/
+
+.Avatar {
+  position: relative;
+}
+
+/* Avatar-item */
+.Avatar-item {
+  transition: opacity 500ms;
+}
+.Avatar-item:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.Avatar.is-canChange:hover .Avatar-item:nth-child(1) {
+  opacity: 0;
+}
+.Avatar.is-canChange:hover .Avatar-item:nth-child(2) {
+  opacity: 1;
+}
+
+/* Avatar-image */
+.Avatar-image {
+  border-radius: var(--global-borderRadius);
+  min-width: 150px;
+}

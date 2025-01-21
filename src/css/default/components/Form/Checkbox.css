@@ -1,0 +1,24 @@
+/*
+<label class="Checkbox">
+	<input class="Input" type="checkbox" name checked>
+  label
+-
+<div class="Checkbox">
+	<input class="Input" type="checkbox" name id checked>
+  <label class="Checkbox-label" for="id">
+*/
+
+.Checkbox {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-space-sm);
+}
+
+.Input[type='checkbox'] {
+  cursor: pointer;
+}
+
+.Checkbox-label {
+  cursor: pointer;
+}

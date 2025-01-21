@@ -1,0 +1,37 @@
+.lightbox__shroud {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: var(--global-zIndex-default);
+}
+
+.lightbox {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  z-index: calc(var(--global-zIndex-default) + 1);
+  overflow: auto;
+  outline: 0;
+  text-align: center;
+}
+
+body.lightbox__scroll-lock {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#lightbox > img {
+  max-width: unset;
+  max-height: unset;
+}

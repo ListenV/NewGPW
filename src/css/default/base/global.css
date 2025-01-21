@@ -1,0 +1,128 @@
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  font-size: var(--global-fontSize-desktop);
+}
+@media (max-width: 768px) {
+  html {
+    font-size: var(--global-fontSize-mobile);
+  }
+}
+
+body {
+  background: var(--global-background);
+  background-color: var(--global-backgroundColor);
+  color: var(--global-color);
+  font-family: var(--global-fontFamily);
+  line-height: var(--global-lineHeight);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+li {
+  padding: var(--global-space-sm);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--global-space-default);
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: unset;
+  word-break: break-all;
+}
+
+/* utilities */
+
+.block {
+  display: block;
+}
+
+pre {
+  font-family: var(--global-fontFamilyMonospace);
+}
+
+code {
+  font-family: var(--global-fontFamilyMonospace);
+  font-size: 85%;
+}
+
+/* Form */
+td.label {
+  text-align: right;
+  vertical-align: middle;
+}
+
+blockquote {
+  background-color: var(--global-colorTransparentSecondary-box);
+  border: var(--global-border-box);
+  border-radius: var(--global-borderRadius);
+  word-break: break-word;
+  padding: var(--global-space-sm);
+  margin: 4px 5px 10px;
+  box-shadow: var(--Body-boxShadow);
+}
+
+.center {
+  text-align: center;
+}
+
+.floatright {
+  float: right;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+span[style='color: red'] {
+  color: var(--global-color-warning);
+}
+
+span[style='color: yellow'] {
+  color: var(--global-color-circle);
+}
+
+span[style='color: green'] {
+  color: var(--global-color-success);
+}
+
+span[style='color: blue'] {
+  color: var(--global-background-selection);
+}
+
+.autocomplete-suggestions {
+  margin-top: 4px;
+  border: none;
+  white-space: nowrap;
+  width: unset !important;
+  background-color: var(--Input-background);
+  cursor: pointer;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion {
+  line-height: 24px;
+  padding: 0 8px;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion.autocomplete-selected {
+  background-color: var(--Input-onHover-background);
+}

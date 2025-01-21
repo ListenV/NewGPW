@@ -1,0 +1,91 @@
+/* 
+TorrentTitle TorrentTitle--standalone   # settings - torrent title
+  TorrentTitle-item
+*/
+
+.TorrentTitle {
+}
+
+.TableTorrent.is-alternative .TorrentTitle {
+  font-family: var(--global-fontFamilyMonospace);
+}
+
+/* item */
+.TorrentTitle-item.bg {
+  color: #fff;
+  padding: 1px 3.5px;
+  display: inline-block;
+  font-size: 0.8em;
+  border-radius: 3px;
+}
+
+.TorrentTitle-item {
+  vertical-align: middle;
+  margin: 3px 0px;
+  line-height: 1.5em;
+}
+
+.TorrentTitle-item.group_name a {
+  color: var(--TableTorrent-movieInfoTitle-color);
+}
+
+.TorrentTitle-item.official_release_group {
+  background-color: #e80128;
+}
+
+.TorrentTitle-item.torrent_discount.free {
+  background-color: #0055ff;
+}
+
+.TorrentTitle-item.torrent_discount.three_fourth_off {
+  background-color: #622ca8;
+}
+
+.TorrentTitle-item.torrent_discount.two_fourth_off {
+  background-color: #8d4b44;
+}
+
+.TorrentTitle-item.torrent_discount.one_fourth_off {
+  background-color: #3e6e7b;
+}
+
+.TorrentTitle-item.torrent_discount.neutral {
+  background-color: #55666f;
+}
+
+.TorrentTitle-item.bg:is(.tl_buy, .tl_diy) {
+  background-color: #d46d3d;
+}
+.TorrentTitle-item.tl_notice {
+  font-weight: bold;
+}
+.TorrentTitle-item.tl_reported {
+  color: #d39911;
+}
+.TorrentTitle-item.tl_trumpable {
+  color: #d46d3d;
+}
+.TorrentTitle-item.tl_snatched {
+  color: #00bc8c;
+}
+
+.TorrentSnatched {
+  color: rgb(127 76 76);
+}
+
+.TorrentDownloading {
+  color: #919830;
+}
+
+.TorrentSeeding {
+  color: green;
+}
+
+/* standalone */
+.Form-row.is-torrentTitle {
+  font-size: var(--TableTorrent-fontSize);
+}
+.TorrentTitle--standalone {
+  font-size: var(--TableTorrent-fontSize);
+  color: var(--Link-color);
+}

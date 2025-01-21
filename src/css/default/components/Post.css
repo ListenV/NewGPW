@@ -1,0 +1,100 @@
+/*
+Where
+  home   # private.php
+
+PostList PostList<Name>
+
+Post background-transparent
+  Post-header
+  Post-body
+
+Post-header
+  <span Post-headerTitle
+  Post-headerActions
+  -
+  Post-headerLeft
+    <span Post-headerTitle
+    <span Post-headerDate
+    <span Post-headerAuthor
+  Post-headerActions
+  
+Post-headerMultipleRows
+  Post-headerRow
+    Post-headerTitle
+    Post-headerActions
+  Post-headerRow Post-headerTags
+*/
+
+.PostList {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: var(--global-space-lg);
+}
+
+.Post {
+  line-height: 1.5em;
+}
+.Post:not(:last-child) {
+  /* border-bottom: var(--Box-border);*/
+}
+
+.Post-header {
+  display: flex;
+  gap: var(--global-space-default);
+  padding-top: var(--global-space-default);
+  padding-bottom: var(--global-space-default);
+  flex-wrap: wrap;
+  border-bottom: var(--Box-border);
+}
+@media (min-width: 768px) {
+  .Post-header {
+    flex-wrap: nowrap;
+  }
+}
+
+.Post-headerTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: inline;
+}
+
+.Post-headerActions {
+  margin-left: auto;
+  display: inline-flex;
+  gap: var(--global-space-sm);
+  font-size: var(--global-fontSize-sm);
+  white-space: nowrap;
+}
+
+.Post-headerRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Post-body {
+  padding-top: var(--global-space-default);
+  padding-bottom: var(--global-space-default);
+}
+
+.Post-bodyActions {
+  column-gap: var(--global-space-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.Post-bodyActions[variant='alignLeft'] {
+  justify-content: flex-start;
+}
+
+.preview_submit {
+  text-align: center;
+}
+
+.PostList-actions {
+  font-style: italic;
+  padding: var(--global-space-default);
+  border-top: 1px dashed var(--global-color-border);
+}

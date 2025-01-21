@@ -1,0 +1,56 @@
+/*
+Header - Profile
+
+Dropdown is-open
+	Dropdown-trigger
+	DropdownMenu Overlay
+		<a|button|input[type="submit"] class="DropdownMenu-item">
+*/
+
+.Dropdown {
+  position: relative;
+}
+
+.Dropdown-trigger {
+  cursor: pointer;
+}
+
+.DropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  z-index: var(--global-zIndex-default);
+  list-style: none;
+}
+
+.Dropdown:not(.is-open) .DropdownMenu {
+  display: none;
+}
+
+.DropdownMenu-item {
+  color: var(--DropdownMenu-item-color);
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+  padding: var(--global-space-sm) var(--global-space-default);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* override button */
+  border: none;
+  background: none;
+  /* override input[type="submit"] */
+  width: 100%;
+  text-align: left;
+}
+
+.DropdownMenu-selectedItem {
+  color: var(--DropdownMenu-item-onHover-color);
+  text-decoration: var(--DropdownMenu-item-onHover-textDecoration);
+  background: var(--DropdownMenu-item-onHover-background);
+}
+
+.DropdownMenu-item:hover {
+  background: var(--DropdownMenu-item-onHover-background);
+  color: var(--DropdownMenu-item-onHover-color);
+  text-decoration: var(--DropdownMenu-item-onHover-textDecoration);
+}

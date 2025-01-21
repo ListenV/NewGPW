@@ -1,0 +1,35 @@
+/*
+noty_bar
+	noty_message
+	noty_buttons
+*/
+
+.noty_bar {
+  border-radius: var(--global-borderRadius);
+  overflow: hidden;
+  background: var(--Box-background);
+  color: var(--Box-color);
+  border: var(--Box-border);
+  box-shadow: var(--Box-boxShadow);
+}
+
+.noty_bar .noty_message {
+  padding: var(--global-space-default) !important;
+  border-top-left-radius: var(--global-borderRadius);
+  border-top-right-radius: var(--global-borderRadius);
+  font-size: var(--global-fontSize-lg) !important;
+  background: var(--Box-header-background);
+  color: var(--Box-header-color);
+  border-bottom: var(--Box-border);
+}
+
+.noty_bar .noty_buttons {
+  border-top: none !important;
+  background-color: inherit !important;
+}
+
+ul#noty_bottomRight_layout_container > li {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
