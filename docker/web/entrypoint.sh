@@ -1,19 +1,25 @@
 #!/bin/bash
 
+mkdir -pv /var/www/.cache
+chmod 777 /var/www/.cache
+chown www-data:www-data /var/www/.cache
+
+# 是否生成PHP配置文件
+if [ ! -f "/config/config.local.php" ] ; then
+    echo "Generate gazelle default config: config.local.php"
+    cp /var/www/config.default.php /config/config.local.php
+fi
+
+# 是否生成Nginx配置文件
+if [ ! -f "/etc/nginx/conf.d/gazelle.conf" ] ; then
+    echo "Generate nginx default config: gazelle.conf"
+    cp /var/www/docker/web/nginx.conf /etc/nginx/conf.d/gazelle.conf
+fi
+
 run_service()
 {
     /etc/init.d/$1 start || exit 1
 }
-
-# We'll need these anyway so why not kill some time while waiting on MySQL to be ready
-su -c 'echo "====== Composer Install ======"; \
-    composer --version; \
-    composer install; \
-' gazelle
-echo -e "\n====== Yarn Install ======"
-yarn
-echo -e "\n====== Yarn Start ======"
-yarn start &
 
 # Wait for MySQL...
 counter=1
@@ -41,16 +47,12 @@ fi
 
 echo "Start services..."
 
-mkdir -p /var/www/logs
-mkdir -p /var/www/.cache
-chmod 777 /var/www/.cache
-chown gazelle:gazelle  /var/www/.cache
 truncate -s0  /var/www/logs/*.log
 
 run_service cron
 run_service nginx
 run_service php7.4-fpm
 
-crontab /var/www/.docker/web/crontab
+crontab /var/www/docker/web/crontab
 
 tail -f /var/www/logs/*.log

@@ -15,6 +15,7 @@ VOLUME /var/lib/manticore/conf/
 
 COPY crontab /var/lib/manticore/conf/
 COPY entrypoint.sh /var/lib/manticore/conf/
+COPY ./manticore.conf /var/lib/manticore/conf/manticore.conf
 
 # redirect logs to stdout
 RUN ln -sv /dev/stdout /var/log/query.log \

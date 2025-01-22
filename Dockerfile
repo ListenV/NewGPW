@@ -1,15 +1,12 @@
 FROM ubuntu:20.04
 
-WORKDIR /var/www
+WORKDIR /tmp/gazelle
 
-# Software package layer
-# Nodesource setup comes after yarnpkg because it runs `apt-get update`
+RUN apt-get update \
+    && apt install -y software-properties-common \
+    && add-apt-repository ppa:ondrej/php
 
-RUN apt-get update
-RUN apt install -y software-properties-common
-RUN add-apt-repository ppa:ondrej/php
-
-RUN  DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
     cron \
@@ -50,15 +47,13 @@ RUN  DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y --no-install-r
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y --no-install-recommends \
-    nodejs \
-    yarn
+    && apt-get install -y --no-install-recommends nodejs yarn
 
 # Python tools layer
-RUN pip3 install chardet 
+RUN pip3 install chardet
 
-RUN curl -s https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/bin/composer
+RUN curl -s https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/bin/composer
 
 # Puppeteer layer
 # This installs the necessary packages to run the bundled version of chromium for puppeteer
@@ -113,16 +108,36 @@ RUN apt-get install -y --no-install-recommends \
 # ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 COPY . /var/www
+
 # Permissions and configuration layer
-RUN useradd -ms /bin/bash gazelle \
-    && chown -R gazelle:gazelle /var/www \
-    && cp /var/www/.docker/web/php.ini /etc/php/7.4/cli/php.ini \
-    && cp /var/www/.docker/web/php.ini /etc/php/7.4/fpm/php.ini \
-    && cp /var/www/.docker/web/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini \
+RUN mkdir -p /var/www/logs /config \
+    && ln -sv /config/config.local.php /var/www/config.local.php \
+    && cp /var/www/docker/web/php.ini /etc/php/7.4/cli/php.ini \
+    && cp /var/www/docker/web/php.ini /etc/php/7.4/fpm/php.ini \
+    && cp /var/www/docker/web/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini \
+    && cp /var/www/docker/web/www.conf /etc/php/7.4/fpm/pool.d/www.conf \
     && rm -f /etc/nginx/sites-enabled/default
 
-EXPOSE 80/tcp
+WORKDIR /var/www
+
+RUN rm -rf /tmp/gazelle
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+RUN composer install
+
+RUN yarn install \
+    && yarn build \
+    && rm -rf ./node_modules \
+    && yarn cache clean \
+    && apt autoremove -y --purge nodejs yarn
+
+RUN mv /var/www/docker/web/entrypoint.sh /entrypoint.sh \
+    && chmod 755 /entrypoint.sh \
+    && chown -R www-data:www-data /var/www
+
 EXPOSE 9002/tcp
+EXPOSE 80/tcp
 EXPOSE 35729/tcp
 
-ENTRYPOINT [ "/bin/bash", "/var/www/.docker/web/entrypoint.sh" ]
+ENTRYPOINT ["/entrypoint.sh"]
