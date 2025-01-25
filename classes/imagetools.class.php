@@ -124,8 +124,8 @@ class ImageTools {
                 return true;
             }
         }
-        $ParsedUrl = parse_url($Url);
         if ($ShowError) {
+            $ParsedUrl = parse_url($Url);
             error($ParsedUrl['host'] . ' is not an allowed image host. Please use a different host.');
         }
         return false;
