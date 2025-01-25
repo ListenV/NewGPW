@@ -95,11 +95,11 @@ docker-compose up -d
 docker-compose down
 ```
 
-4. 现在你可以通过 http://localhost:9000 访问网站。
+5. 现在你可以通过 http://localhost:9000 访问网站。
 
-5. 注册用户: 可以查看 `./cache/emails` 查找本地邮件来激活账号。
+6. 注册用户: 可以查看 `./cache/emails` 查找本地邮件来激活账号。
 
-6. 如果你需要 Tracker, 部署[Ocelot](https://github.com/Mosasauroidea/Ocelot)。
+7. 如果你需要 Tracker, 部署[Ocelot](https://github.com/Mosasauroidea/Ocelot)。
 
 ## 目录说明
 
