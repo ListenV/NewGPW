@@ -108,8 +108,8 @@ client.upload.codec_required: |-
   Please select a codec.
 client.upload.container_required: |-
   Please select a container.
-client.upload.desc_img_3_png: |-
-  At least three PNG screenshots are required, see <a href="wiki.php?action=article&id=51" target="_blank">help</a>.
+client.upload.desc_img_3_png_or_jpg: |-
+  At least three PNG or JPG screenshots are required, see <a href="wiki.php?action=article&id=51" target="_blank">help</a>.
 client.upload.desc_img_hosts: |-
   Please use image hosts that are recommended by Upload Rule <a href="rules.php?p=upload#2.2.1" target="_blank">2.2.1</a>.
 client.upload.english_name: |-

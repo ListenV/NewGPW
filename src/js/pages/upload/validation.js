@@ -145,8 +145,8 @@ export function registerValidation() {
 
   addValidator({
     selector: `[name="release_desc"]`,
-    validate: validateDescImg3Png,
-    messageKey: 'client.upload.desc_img_3_png',
+    validate: validateDescImg3PngOrJpg,
+    messageKey: 'client.upload.desc_img_3_png_or_jpg',
   })
   addValidator({
     selector: `[name="release_desc"]`,
@@ -240,11 +240,11 @@ function wrap(validate) {
   }
 }
 
-export function validateDescImg3Png(value) {
+export function validateDescImg3PngOrJpg(value) {
   if (!value) {
     return false
   }
-  const matches = value.match(/\[img=.*?png\s*]|\[img\].*?png\s*\[\/img\]/gi)
+  const matches = value.match(/\[img=.*?(png|jpe?g)\s*]|\[img\].*?(png|jpe?g)\s*\[\/img\]/gi)
   if (!matches) {
     return false
   }
