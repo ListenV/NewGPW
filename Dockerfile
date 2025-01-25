@@ -109,8 +109,7 @@ RUN apt-get install -y --no-install-recommends \
 
 COPY . /var/www
 
-# Permissions and configuration layer
-RUN mkdir -p /var/www/logs /config \
+RUN mkdir -pv /var/www/logs /config /var/www/.cache \
     && ln -sv /config/config.local.php /var/www/config.local.php \
     && cp /var/www/docker/web/php.ini /etc/php/7.4/cli/php.ini \
     && cp /var/www/docker/web/php.ini /etc/php/7.4/fpm/php.ini \

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-mkdir -pv /var/www/.cache
-chmod 777 /var/www/.cache
-chown www-data:www-data /var/www/.cache
+# 挂载目录的拥有者在挂载时会改变，所以在启动时需要重新设置为www-data
+chown -R www-data:www-data /var/www
 
 # 是否生成PHP配置文件
 if [ ! -f "/config/config.local.php" ] ; then
