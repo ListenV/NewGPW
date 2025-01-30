@@ -61,8 +61,8 @@ $CONFIG['SPHINX_INDEX'] = 'torrents'; // TODO: not used
 
 // Ocelot details
 $CONFIG['DISABLE_TRACKER'] = true;
-$CONFIG['TRACKER_HOST'] = "localhost";
-$CONFIG['TRACKER_PORT'] = 2710;
+$CONFIG['TRACKER_HOST'] = "ocelot";
+$CONFIG['TRACKER_PORT'] = 34000;
 $CONFIG['TRACKER_SECRET'] = ""; // Must be 32 characters and match site_password in Ocelot's config.cpp
 $CONFIG['TRACKER_REPORTKEY'] = ""; // Must be 32 characters and match report_password in Ocelot's config.cpp
 
