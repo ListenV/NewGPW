@@ -344,13 +344,28 @@ if (check_perms('users_mod') && CONFIG['FEATURE_EMAIL_REENABLE']) {
 ?>
 
 <?
+// 设置默认值
 $BodyClass = 'browse';
-if ($_REQUEST['action']) {
-    $BodyClass = $_REQUEST['action'];
-} elseif ($_REQUEST['type']) {
-    $BodyClass = $_REQUEST['type'];
-} elseif ($_REQUEST['id']) {
+
+// 使用 isset() 或 array_key_exists() 检查键是否存在
+if (isset($_REQUEST['action'])) {
+    // 添加安全过滤
+    $BodyClass = display_str($_REQUEST['action']);
+} elseif (isset($_REQUEST['type'])) {
+    $BodyClass = display_str($_REQUEST['type']);
+} elseif (isset($_REQUEST['id'])) {
     $BodyClass = 'details';
+}
+
+// 可以添加白名单验证
+$allowedClasses = [
+    'browse', 'details', 'upload', 'search', 
+    'artist', 'requests', 'top10', 'rules'
+];
+
+// 确保 BodyClass 是允许的值
+if (!in_array($BodyClass, $allowedClasses)) {
+    $BodyClass = 'browse'; // 如果不在白名单中，使用默认值
 }
 ?>
 
