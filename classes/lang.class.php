@@ -76,10 +76,13 @@ class Lang {
 
     private static function get_locale($Lang) {
         $NewLang = $Lang == 'chs' ? 'zh-Hans' : $Lang;
-        $Data = self::$Locales[$Lang];
-        if (!empty($Data)) {
-            return $Data;
+        
+        // 先检查缓存是否存在
+        if (isset(self::$Locales[$Lang]) && !empty(self::$Locales[$Lang])) {
+            return self::$Locales[$Lang];
         }
+        
+        // 如果缓存不存在，加载YAML文件
         global $WINDOW_CONFIG;
         $YamlText = G::$Twig->render("$NewLang/$NewLang.yaml", ['CONFIG' => $WINDOW_CONFIG]);
         $Locale = yaml_parse($YamlText);
