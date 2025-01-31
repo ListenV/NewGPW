@@ -1340,22 +1340,38 @@ WHERE ud.TorrentID=? AND ui.NotifyOnDeleteDownloaded='1' AND ud.UserID NOT IN ({
                 $Info[] = Format::torrent_label(t('server.torrents.diy'), 'bg tl_diy');
             }
         }
-        if (self::global_freeleech()) {
+        
+               if (self::global_freeleech()) {
             $Info[] = Format::torrent_label(t('server.torrents.fld'), 'tl_free bg torrent_discount free');
         } else if (isset($Data['FreeTorrent'])) {
             if ($Data['FreeTorrent'] == self::FREE) {
-                $Info[] = Format::torrent_label(t('server.torrents.fld'), 'tl_free bg torrent_discount free', ($Data['FreeEndTime'] ? t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]) : ""));
+                // 使用相同的 CSS 类来保持一致的样式
+                if ($Data['FreeEndTime']) {
+                    $Info[] = Format::torrent_label(t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]), 'tl_free bg torrent_discount free');
+                }
+                $Info[] = Format::torrent_label(t('server.torrents.fld'), 'tl_free bg torrent_discount free');
             } else if ($Data['FreeTorrent'] == self::Neutral) {
                 $Info[] = Format::torrent_label('Neutral Leech!', 'bg torrent_discount neutral');
             } else if ($Data['FreeTorrent'] == self::OneFourthOff) {
-                $Info[] = Format::torrent_label('-25%', 'bg torrent_discount one_fourth_off', ($Data['FreeEndTime'] ? t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]) : ""));
+                if ($Data['FreeEndTime']) {
+                    $Info[] = Format::torrent_label(t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]), 'bg torrent_discount one_fourth_off');
+                }
+                $Info[] = Format::torrent_label('-25%', 'bg torrent_discount one_fourth_off');
             } else if ($Data['FreeTorrent'] == self::TwoFourthOff) {
-                $Info[] = Format::torrent_label('-50%', 'bg torrent_discount two_fourth_off', ($Data['FreeEndTime'] ? t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]) : ""));
+                if ($Data['FreeEndTime']) {
+                    $Info[] = Format::torrent_label(t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]), 'bg torrent_discount two_fourth_off');
+                }
+                $Info[] = Format::torrent_label('-50%', 'bg torrent_discount two_fourth_off');
             } else if ($Data['FreeTorrent'] == self::ThreeFourthOff) {
-                $Info[] = Format::torrent_label('-75%', 'bg torrent_discount three_fourth_off', ($Data['FreeEndTime'] ? t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]) : ""));
+                if ($Data['FreeEndTime']) {
+                    $Info[] = Format::torrent_label(t('server.torrents.free_left', ['Values' => [time_diff($Data['FreeEndTime'], 2, false)]]), 'bg torrent_discount three_fourth_off');
+                }
+                $Info[] = Format::torrent_label('-75%', 'bg torrent_discount three_fourth_off');
             }
         }
-
+        
+        
+        
         $Class = $Option['Class'];
         if ($Option['Self']) {
             if (!empty($Data['ReportID']) > 0) {
