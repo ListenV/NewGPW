@@ -1,5 +1,6 @@
 <?php
 
+$TotalyearlyPoints = 0; // 初始化变量
 $Page = !empty($_GET['page']) ? intval($_GET['page']) : 1;
 $Page = max(1, $Page);
 $Limit = CONFIG['TORRENTS_PER_PAGE'];
