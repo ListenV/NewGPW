@@ -650,6 +650,8 @@ server.bonus.upload-3: |-
   250GiB 上传量
 server.bonus.upload-4: |-
   500GiB 上传量
+server.bonus.upload-5: |-
+  1000GiB 上传量
 server.bonus.recommend-movie-7: |-
   推荐电影 7 天
 server.bonus.recommend-movie-30: |-
