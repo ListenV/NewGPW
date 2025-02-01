@@ -1313,7 +1313,11 @@ WHERE ud.TorrentID=? AND ui.NotifyOnDeleteDownloaded='1' AND ud.UserID NOT IN ({
             $Info[] = Format::torrent_label(t('server.torrents.allow'), 'tl_allow');
         }
         $OfficialReleaseGroup = false;
-        $ReleaseGroup = Users::get_release_group_by_id($Data['Makers'])['Name'];
+        $ReleaseGroup = '';
+        $GroupData = Users::get_release_group_by_id($Data['Makers']);
+        if (!empty($GroupData) && isset($GroupData['Name'])) {
+            $ReleaseGroup = $GroupData['Name'];
+        }
         if (empty($ReleaseGroup)) {
             $ReleaseGroup = self::release_group($Data);
         } else {
