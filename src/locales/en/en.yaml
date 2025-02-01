@@ -664,6 +664,8 @@ server.bonus.upload-3: |-
   250GB upload
 server.bonus.upload-4: |-
   500GB upload
+server.bonus.upload-5: |-
+  1000GB upload
 server.bonus.recommend-movie-7: |-
   Recommend a movie 7 day
 server.bonus.recommend-movie-30: |-
