@@ -13,7 +13,7 @@ $SortOrders = array(
     'random' => false
 );
 
-$RequestType = $_GET['request_type'];
+$RequestType = isset($_GET['request_type']) ? $_GET['request_type'] : [1];
 if (!empty($RequestType)) {
     $SphQL->where("requesttype", $RequestType);
 }
@@ -260,7 +260,7 @@ if (!empty($_GET['tags'])) {
 } else {
     $_GET['tags_type'] = 0;
 }
-$TagNames = $_GET['tags'];
+$TagNames = isset($_GET['tags']) ? $_GET['tags'] : '';
 
 if (isset($SearchWords)) {
     $QueryParts = array();
