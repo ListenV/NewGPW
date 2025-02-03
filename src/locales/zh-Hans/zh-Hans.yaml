@@ -8405,3 +8405,7 @@ server.torrent.cover_view: |-
   封面视图
 server.torrent.release_name_view: |-
   文件名视图
+server.common.fl.download: |-
+  令牌下载
+server.torrents.permalink1: |-
+  种子链接  
