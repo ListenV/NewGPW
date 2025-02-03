@@ -680,7 +680,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
                     </div>
             <?
                 }
-                include(CONFIG['SERVER_ROOT'] . '/sections/torrents/collage.php');
+                
             }
             include(CONFIG['SERVER_ROOT'] . '/sections/torrents/vote_ranks.php');
             include(CONFIG['SERVER_ROOT'] . '/sections/torrents/vote.php');
@@ -793,23 +793,23 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
                                 <div class="TableTorrent-title">
                                     <span class="TableTorrent-titleActions">
                                         [
-                                        <a href="torrents.php?action=download&amp;id=<?= $TorrentID ?>&amp;authkey=<?= $LoggedUser['AuthKey'] ?>&amp;torrent_pass=<?= $LoggedUser['torrent_pass'] ?>" data-tooltip="<?= t('server.common.download') ?>"><?= ($HasFile ? 'DL' : 'Missing') ?></a>
+                                        <a href="torrents.php?action=download&amp;id=<?= $TorrentID ?>&amp;authkey=<?= $LoggedUser['AuthKey'] ?>&amp;torrent_pass=<?= $LoggedUser['torrent_pass'] ?>" data-tooltip="<?= t('server.common.download') ?>"><?= ($HasFile ? t('server.common.download') : t('server.common.missing')) ?></a>
                                         <? if ($CanUseToken) { ?>
                                             |
-                                            <a href="torrents.php?action=download&amp;id=<?= $TorrentID ?>&amp;authkey=<?= $LoggedUser['AuthKey'] ?>&amp;torrent_pass=<?= $LoggedUser['torrent_pass'] ?>&amp;usetoken=1" data-tooltip="<?= t('server.common.use_fl_tokens') ?>" onclick="return confirm('<?= FL_confirmation_msg($Seeders, $Size) ?>');">FL</a>
+                                            <a href="torrents.php?action=download&amp;id=<?= $TorrentID ?>&amp;authkey=<?= $LoggedUser['AuthKey'] ?>&amp;torrent_pass=<?= $LoggedUser['torrent_pass'] ?>&amp;usetoken=1" data-tooltip="<?= t('server.common.use_fl_tokens') ?>" onclick="return confirm('<?= FL_confirmation_msg($Seeders, $Size) ?>');"><?= t('server.common.fl.download') ?></a>
                                         <? } ?>
                                         |
-                                        <a href="reportsv2.php?action=report&amp;id=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.report') ?>">RP</a>
+                                        <a href="reportsv2.php?action=report&amp;id=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.report') ?>"><?= t('server.torrents.report') ?></a>
                                         <? if ($CanEdit) { ?>
                                             |
-                                            <a href="torrents.php?action=edit&amp;id=<?= $TorrentID ?>" data-tooltip="<?= t('server.common.edit') ?>">ED</a>
+                                            <a href="torrents.php?action=edit&amp;id=<?= $TorrentID ?>" data-tooltip="<?= t('server.common.edit') ?>"><?= t('server.common.edit') ?></a>
                                         <? }
                                         if ($CanDelete) { ?>
                                             |
-                                            <a href="torrents.php?action=delete&amp;torrentid=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.remove') ?>">RM</a>
+                                            <a href="torrents.php?action=delete&amp;torrentid=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.remove') ?>"><?= t('server.torrents.remove') ?></a>
                                         <? } ?>
                                         |
-                                        <a href="torrents.php?torrentid=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.permalink') ?>">PL</a>
+                                        <a href="torrents.php?torrentid=<?= $TorrentID ?>" data-tooltip="<?= t('server.torrents.permalink') ?>"><?= t('server.torrents.permalink1') ?></a>
                                         ]
                                     </span>
                                     <span class="TableTorrent-titleCheck">
