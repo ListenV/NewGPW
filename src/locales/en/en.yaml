@@ -8539,3 +8539,7 @@ server.torrent.cover_view: |-
   Cover View
 server.torrent.release_name_view: |-
   Release Name View
+server.common.fl.download: |-
+  FL
+server.torrents.permalink1: |-
+  PR   
