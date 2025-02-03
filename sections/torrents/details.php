@@ -680,7 +680,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
                     </div>
             <?
                 }
-                
+               include(CONFIG['SERVER_ROOT'] . '/sections/torrents/collage.php'); 
             }
             include(CONFIG['SERVER_ROOT'] . '/sections/torrents/vote_ranks.php');
             include(CONFIG['SERVER_ROOT'] . '/sections/torrents/vote.php');
