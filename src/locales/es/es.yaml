@@ -2285,3 +2285,7 @@ server.user.rss_blog: |-
   Blog
 client.stats.peers: |-
   Peers
+server.common.fl.download: |-
+  FL
+server.torrents.permalink1: |-
+  PR  
