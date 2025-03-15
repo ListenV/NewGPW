@@ -6514,7 +6514,7 @@ server.user.invite_rules_5: |-
 server.user.invite_rules_6: |-
   Não envie um convite se você não leu ou não entender a informação acima.
 server.user.invite_rules_7: |-
-  Diga ao seu convidado para adicionar noreply@{{CONFIG['MAIL_HOST']}} à whitelist antes de enviar um convite.
+  Diga ao seu convidado para adicionar {{CONFIG['MAIL_HOST']}} à whitelist antes de enviar um convite.
 server.user.invite_tree: |-
   Árvore de Convidados
 server.user.invitee_list: |-
