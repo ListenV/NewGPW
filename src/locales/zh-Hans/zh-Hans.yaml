@@ -6442,7 +6442,7 @@ server.user.invite_rules_5: |-
 server.user.invite_rules_6: |-
   如果你尚未阅读或不理解上述信息，请勿发送邀请。
 server.user.invite_rules_7: |-
-  请在发送邀请邮件前告知受邀人将 noreply@{{CONFIG['MAIL_HOST']}} 添加到邮件白名单。
+  请在发送邀请邮件前告知受邀人将 {{CONFIG['MAIL_HOST']}} 添加到邮件白名单。
 server.user.invite_tree: |-
   邀请树
 server.user.invitee_list: |-
