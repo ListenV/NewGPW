@@ -6564,7 +6564,7 @@ server.user.invite_rules_5: |-
 server.user.invite_rules_6: |-
   Do not send an invite if you have not read or do not understand the information above.
 server.user.invite_rules_7: |-
-  Tell your invitee to add noreply@{{CONFIG['MAIL_HOST']}} to email whitelist before you send invite.
+  Tell your invitee to add {{CONFIG['MAIL_HOST']}} to email whitelist before you send invite.
 server.user.invite_tree: |-
   Invite tree
 server.user.invitee_list: |-
