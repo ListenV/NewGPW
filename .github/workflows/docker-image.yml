@@ -51,6 +51,7 @@ jobs:
         package-name: ${{ env.IMAGE_NAME }}
         package-type: container
         delete-only-untagged-versions: true
+        token: ${{ secrets.GHCR_TOKEN }}
 
   build-gpw-mysql:
     runs-on: ubuntu-latest
@@ -87,6 +88,7 @@ jobs:
         package-name: ${{ env.IMAGE_NAME }}
         package-type: container
         delete-only-untagged-versions: true
+        token: ${{ secrets.GHCR_TOKEN }}
 
   build-gpw-manticore:
     runs-on: ubuntu-latest
@@ -123,3 +125,4 @@ jobs:
         package-name: ${{ env.IMAGE_NAME }}
         package-type: container
         delete-only-untagged-versions: true
+        token: ${{ secrets.GHCR_TOKEN }}
