@@ -52,8 +52,7 @@ RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y --no-install-re
 # Python tools layer
 RUN pip3 install chardet
 
-RUN curl -s https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/bin/composer
+RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
 
 # Puppeteer layer
 # This installs the necessary packages to run the bundled version of chromium for puppeteer
@@ -124,12 +123,6 @@ RUN rm -rf /tmp/gazelle
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install
-
-RUN yarn install \
-    && yarn build \
-    && rm -rf ./node_modules \
-    && yarn cache clean \
-    && apt autoremove -y --purge nodejs yarn
 
 RUN mv /var/www/docker/web/entrypoint.sh /entrypoint.sh \
     && chmod 755 /entrypoint.sh \
