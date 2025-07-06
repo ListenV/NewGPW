@@ -45,6 +45,13 @@ jobs:
         # tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
         tags: ${{ env.REGISTRY }}/listenv/${{ env.IMAGE_NAME }}:latest
 
+    - name: 删除旧包
+      uses: actions/delete-package-versions@v5
+      with:
+        package-name: ${{ env.IMAGE_NAME }}
+        package-type: container
+        delete-only-untagged-versions: true
+
   build-gpw-mysql:
     runs-on: ubuntu-latest
     env:
@@ -74,6 +81,13 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/listenv/${{ env.IMAGE_NAME }}:latest
 
+    - name: 删除旧包
+      uses: actions/delete-package-versions@v5
+      with:
+        package-name: ${{ env.IMAGE_NAME }}
+        package-type: container
+        delete-only-untagged-versions: true
+
   build-gpw-manticore:
     runs-on: ubuntu-latest
     env:
@@ -102,3 +116,10 @@ jobs:
         # 是否推送，默认false
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/listenv/${{ env.IMAGE_NAME }}:latest
+
+    - name: 删除旧包
+      uses: actions/delete-package-versions@v5
+      with:
+        package-name: ${{ env.IMAGE_NAME }}
+        package-type: container
+        delete-only-untagged-versions: true
